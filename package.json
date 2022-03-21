@@ -1,0 +1,30 @@
+{
+  "name": "project-name",
+  "version": "1.0.0",
+  "description": "project-description",
+  "main": "index.js",
+  "scripts": {
+    "dev:build": "tsc --build -w",
+    "dev:run": "nodemon server/dist/index.js",
+    "dev": "concurrently npm:dev:*",
+    "start": "node server/dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "project-repository"
+  },
+  "keywords": [],
+  "author": "project-author",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "mongoose": "^6.2.7"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/node": "^17.0.21",
+    "nodemon": "^2.0.15"
+  }
+}
