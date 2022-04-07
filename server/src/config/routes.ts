@@ -3,7 +3,7 @@ import { Api } from '../routes/api'
 
 
 // Attach additional routes to the Routes object.
-let Routes = { 
+let Routes = {
     Api
 }
 
@@ -27,35 +27,34 @@ export default Routes
 
     let Routes = {
         Api,
-        Users
+        Shop,
+        Users,
         Login,
         Register,
-        Character,
     }
 
-    In config.ts, you would then set your App to use each Routes object. Example:
+    In config.ts the Routes object is iterated through and the name of the imported routes file is
+    used as the endpoint. 
+    
+    For example: 
+        • api.ts will give us an endpoint of www.domain.com/api/*
+        • shop.ts will give us an endpoint of www.domain.com/shop/*
 
-    APP.use('/api',       Routes.Api      )
-    APP.use('/users',     Routes.Users    )
-    APP.use('/login',     Routes.Login    )
-    APP.use('/register',  Routes.Register )
-    APP.use('/character', Routes.Character)
-
-    So in our API, we don't have to set our GETS/PUTS etc. to use /users/endpoint because our App
-    implies that if we manage to hit the Routes.Users object, we must have visited /users.
+    In each of our API files, this means we don't have to set our GETS/PUTS etc. to use /shop because our App
+    implies that if we manage to hit the Routes.Shops object, we must have visited /shop page.
 
     Which takes our endpoint from looking something like this: 
     
-        Api.get('/users/getuser', (req: Request, res: Response) => {
+        Api.get('/shop/shirts', (req: Request, res: Response) => {
             // ...
         })
 
     To someting like this:
 
-        Api.get('getuser', (req: Request, res: Response) => {
+        Api.get('shirts', (req: Request, res: Response) => {
             // ...
         })
 
-    Which implies that the current url is "www.domain.com/users/getuser" and at the same time keeping
-    our backend managemable, clean and DRY (not having to repeat "/users/x" for every endpoint).
+    Which implies that the current url is "www.domain.com/shop/shirts" and at the same time keeping
+    our backend manageable, clean and DRY (not having to repeat "/shop/*" for every endpoint).
 */

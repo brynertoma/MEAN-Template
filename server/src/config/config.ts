@@ -20,7 +20,7 @@ APP.use(Express.static('client/dist'))
 
 
 // Setup routes.
-APP.use('/api', Routes.Api)
+for (const Route in Routes) APP.use(`/${Route}`, (Routes as any)[Route])
 
 
 // Get the environment port.

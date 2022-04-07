@@ -15,7 +15,8 @@ if (process.env.NODE_ENV !== 'production') {
 const APP = (0, express_1.default)();
 exports.APP = APP;
 APP.use(express_1.default.static('client/dist'));
-APP.use('/api', routes_1.default.Api);
+for (const Route in routes_1.default)
+    APP.use(`/${Route}`, routes_1.default[Route]);
 const PORT = process.env.PORT || 3000;
 APP.listen(PORT, () => {
     console.log(`Listening on port ${PORT}!`);
